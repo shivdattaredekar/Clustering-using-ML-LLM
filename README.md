@@ -11,7 +11,7 @@ This project aims to preprocess, clean, and cluster email subjects from a datase
 - [Naming Clusters with Google Gemini](#naming-clusters-with-google-gemini)
 - [Results](#results)
 
-## Overview
+# Overview
 
 This project involves the following steps:
 1. Data import and cleaning
@@ -150,7 +150,7 @@ print("Elapsed time: {:.2f} seconds".format(et - st))
 
 X_transformers = np.vstack(data['sentence_transformers'].values)
 
-# Clustering
+#clustering
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
@@ -214,7 +214,7 @@ for embedding_and_method in [(X, 'tfidf'), (X_transformers, 'transformers'), (X_
     plot_pca(f'x0_{method}', f'x1_{method}', cluster_name=clusters_result_name, method=method)
     plt.savefig(f'{method}_clusters.png')
 
-# Visualization
+#Visualization
 import matplotlib.pyplot as plt
 
 cluster_groups = data.groupby('cluster_tfidf')
@@ -231,7 +231,7 @@ for cluster, group in cluster_groups:
     plt.savefig(f'cluster_{cluster}_top_10_topics.png')
     plt.show()
 
-# Naming Clusters with Google Gemini
+#Naming Clusters with Google Gemini
 import google.generativeai as genai
 
 GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY"
@@ -247,7 +247,7 @@ prompt = "Please name the following clusters based on their email subjects."
 response = get_response(input_text, prompt)
 print(response)
 
-# Results
+#Results
   - The TF-IDF model provided the highest silhouette score, indicating it was the most effective method for this dataset.
   - Visualizations and cluster analysis were performed to gain insights into the email subjects.
   - Google Gemini Model will be used to name the clusters based on their subjects.
